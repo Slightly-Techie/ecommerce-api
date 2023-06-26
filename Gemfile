@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 gem 'bootsnap', require: false
+gem 'dotenv-rails'
 gem 'graphql'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'

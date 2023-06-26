@@ -1,40 +1,34 @@
-version: '3.7'
-
+version: "3.7"
 services:
   db:
-    image: postgres
+    image: postgres:14.2-alpine
+    container_name: ecommerce-postgres-14.2
     volumes:
-      - $HOME/volumes/e-commerce/db:/var/lib/postgresql/data
-    container_name: db
-    # command: postgres -c stats_temp_directory=/tmp
+      - postgres_data:/var/lib/postgresql/data
+    command: "postgres -c 'max_connections=500'"
     environment:
-      - POSTGRES_USER=${PG_USER}
-      - POSTGRES_PASSWORD=${PG_PASSWORD}
-    networks:
-      - internal
-  e-commerce-api:
-    image: slightly-techie/e-commerce
-    container_name: e-commerce
-    user: ${CURRENT_UID} # https://medium.com/redbubble/running-a-docker-container-as-a-non-root-user-7d2e00f8ee15
-    tty: true # These two options to allow to use pry and attach to running container. https://stackoverflow.com/questions/35211638/how-to-debug-a-rails-app-in-docker-with-pry
-    stdin_open: true
-    build:
-      context: .
-      args:
-      - USER=${PG_USER}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
-      - "3000:3000"
+      - "5432:5432"
+  api:
+    build: .
+    command: "./bin/rails server"
+    environment:
+      - RAILS_ENV=${RAILS_ENV}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
     volumes:
-      - .:/app
-      - /app/node_modules # prevents the container from polluting local directory
+      - app-storage:/rails/storage
     depends_on:
       - db
-    entrypoint: "./docker/entrypoint.sh"
-    # Uncomment the line below to override the command executed when the container starts and keep the container running after `docker-compose up`
-    # This is useful for example for the initial database setup
-    # command: tail -F anything
-    env_file: .env
-    networks:
-      - internal
-networks:
-  internal:
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data: {}
+  app-storage: {}
