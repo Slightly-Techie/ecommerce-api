@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - $HOME/volumes/e-commerce/db:/var/lib/postgresql/data
+    container_name: db
+    # command: postgres -c stats_temp_directory=/tmp
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+    networks:
+      - internal
+  e-commerce-api:
+    image: slightly-techie/e-commerce
+    container_name: e-commerce
+    user: ${CURRENT_UID} # https://medium.com/redbubble/running-a-docker-container-as-a-non-root-user-7d2e00f8ee15
+    tty: true # These two options to allow to use pry and attach to running container. https://stackoverflow.com/questions/35211638/how-to-debug-a-rails-app-in-docker-with-pry
+    stdin_open: true
+    build:
+      context: .
+      args:
+      - USER=${PG_USER}
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules # prevents the container from polluting local directory
+    depends_on:
+      - db
+    entrypoint: "./docker/entrypoint.sh"
+    # Uncomment the line below to override the command executed when the container starts and keep the container running after `docker-compose up`
+    # This is useful for example for the initial database setup
+    # command: tail -F anything
+    env_file: .env
+    networks:
+      - internal
+networks:
+  internal:

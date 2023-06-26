@@ -21,4 +21,9 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+## Running locally
+
+```bash
+docker-compose run e-commerce-api rails db:migrate
+CURRENT_UID=1000:1000 docker-compose up
+```

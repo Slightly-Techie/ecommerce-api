@@ -23,6 +23,9 @@ default: &default
 
 development:
   <<: *default
+  user: <%= ENV["PG_USER"] || "postgres" %>
+  host: <%= ENV["PG_HOST"] || "db" %>
+  password: <%= ENV["PG_PASSWORD"] || "postgres"%>
   database: ecommerce_api_development
 
   # The specified database role being used to connect to postgres.
