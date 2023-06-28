@@ -10,9 +10,15 @@ gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "shoulda-matchers"
+  gem "pry-byebug"
 end
 
 group :development do
+  gem "annotate"
 end
