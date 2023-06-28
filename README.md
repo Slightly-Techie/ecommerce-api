@@ -28,13 +28,11 @@ gh repo clone Slightly-Techie/ecommerce-api
 
 #### Step 2: Generate your local .env file
 
-Create a `.env` file in the root of the project and copy the contents of `.env.example` into it.
+Create a `.env` file in the root of the project and copy the contents of `.env.example` into it. Keep the same values from the example file in your .env. You'll only need to update the value of the `RAILS_MASTER_KEY` which is empty at the moment. Follow step 3 to see how.
 
-Update the values of the `POSTGRES_PASSWORD` and `RAILS_MASTER_KEY` variables.
+#### Step 3: Generate a new `master.key` and `credentials.yml.enc` file
 
-#### Step 3: Generate `master.key` file and a new `credentials.yml.enc` file
-
-First, Delete the `credentials.yml.enc` file in the `config` directory and in your terminal run the command below generate a new `master.key` file in the `config` directory
+run the command below generate a new `master.key` and `credentials.yml.enc` file in the `config` directory
 
 ```sh
 EDITOR="code --wait" bin/rails credentials:edit
