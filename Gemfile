@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 gem "activeadmin", github: "activeadmin/activeadmin", branch: "master"
+gem "arctic_admin"
 gem "awesome_rails_console"
 gem "bootsnap", require: false
 gem "devise"
