@@ -14,6 +14,7 @@ gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.5"
 gem "sass-rails"
 gem "sprockets", "<4"
+gem 'rack-cors',
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
