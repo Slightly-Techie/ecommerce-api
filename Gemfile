@@ -11,10 +11,10 @@ gem "dotenv-rails"
 gem "graphql"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
+gem "rack-cors"
 gem "rails", "~> 7.0.5"
 gem "sass-rails"
 gem "sprockets", "<4"
-gem 'rack-cors',
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
