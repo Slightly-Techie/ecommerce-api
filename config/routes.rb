@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'application#healthcheck'
-  post '/', to: 'graphql#execute'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  get "/health", to: "api#health"
+  post "/", to: "graphql#execute"
 end
