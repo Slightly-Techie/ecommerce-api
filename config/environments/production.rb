@@ -88,3 +88,4 @@ Rails.application.configure do
   host = "ecommerce-web.fly.dev"
   config.action_mailer.default_url_options = { host: host }
 end
+
