@@ -86,7 +86,7 @@ Rails.application.configure do
 
   #setup configuration for gmail account
   config.action_mailer.delivery_method = :smtp
-  host = "https://ecommerce-web.fly.dev/"
+  host = "ecommerce-web.fly.dev"
   config.action_mailer.default_url_options = { host: host }
 
   #SMTP settings for gmail
