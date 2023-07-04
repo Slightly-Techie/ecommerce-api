@@ -15,6 +15,8 @@ gem "rack-cors"
 gem "rails", "~> 7.0.5"
 gem "sass-rails"
 gem "sprockets", "<4"
+gem 'bcrypt', '~> 3.1.12'
+gem 'email_address', '~> 0.2.4'
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -22,6 +24,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails"
+  gem 'graphiql-rails'
   gem "rubocop", require: false
   gem "shoulda-matchers"
 end
