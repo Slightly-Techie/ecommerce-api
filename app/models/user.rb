@@ -17,22 +17,30 @@
 #  updated_at           :datetime         not null
 #
 class User < ApplicationRecord
+  require 'bcrypt'
 
   has_secure_password
 
-  validates_uniqueness_of :username
-  validates_presence_of :last_name
-  validates_uniqueness_of :email
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
-  validates_presence_of :password_digest
-  validates_uniqueness_of :password_reset_token, allow_nil: true
-  validates_uniqueness_of :confirmation_token, allow_nil: true
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :password_digest, presence: true
+  validates :password_reset_token, uniqueness: true, allow_nil: true
+  validates :confirmation_token, uniqueness: true, allow_nil: true
 
   after_create :send_confirmation_email
 
-  before_create do
-    self.active = true
+  private
+
+  def confirm_email(confirmation_token)
+    if self.confirmation_token == confirmation_token
+      update(email_confirmed: true, confirmation_token: nil)
+      true
+    else
+      false
+    end
   end
+
+  private
 
   def send_confirmation_email
     confirmation_token = SecureRandom.urlsafe_base64

@@ -376,7 +376,6 @@ DEPENDENCIES
   dotenv-rails
   email_address (~> 0.2.4)
   factory_bot_rails
-  faker (~> 3.2)
   graphiql-rails
   graphql
   pg (~> 1.1)
