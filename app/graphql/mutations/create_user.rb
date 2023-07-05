@@ -24,7 +24,7 @@ module Mutations
       )
 
       if user.save
-        { user: user, errors: [] }
+      response 201, { user: user, errors: [] }
       else
         { user: nil, errors: user.errors.full_messages }
       end

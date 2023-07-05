@@ -18,14 +18,11 @@
 #
 FactoryBot.define do
   factory :user do
-    id { 1 }
-    username { "MyString" }
-    email { "MyString" }
-    password_digest { "MyString" }
-    active { false }
-    points { "9.99" }
-    email_confirmed { false }
-    password_reset_token { "MyString" }
-    confirmation_token { "MyString" }
+    other_names { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    username { Faker::Internet.username }
+    email { "#{SecureRandom.hex}@example.com" }
+    password { Faker::Internet.password }
+    points { 0 }
   end
 end
