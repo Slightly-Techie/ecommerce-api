@@ -10,17 +10,18 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    ports:
-      - "5432:5432"
   api:
     build: .
-    command: "./bin/rails server -b 0.0.0.0"
+    entrypoint: "./docker/entrypoint.sh"
     environment:
+      - RAILS_ENV=${RAILS_ENV}
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
     volumes:
+      - .:/app
       - app-storage:/rails/storage
     depends_on:
       - db

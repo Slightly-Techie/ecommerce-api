@@ -29,6 +29,9 @@ class User < ApplicationRecord
 
   after_create :send_confirmation_email
 
+  before_create do
+    self.active = true
+  end
 
   def confirm_email(confirmation_token)
     if self.confirmation_token == confirmation_token
