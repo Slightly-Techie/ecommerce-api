@@ -23,10 +23,11 @@ group :development, :test do
   gem "pry-rails"
   gem "rspec-rails"
   gem "rubocop", require: false
+  gem 'rubocop-rails'
   gem "shoulda-matchers"
 end
 
 group :development do
-  gem "annotate"
+  gem 'annotate', '~> 3.2'
   gem "solargraph"
 end

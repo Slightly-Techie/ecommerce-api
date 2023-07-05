@@ -195,6 +195,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.2-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -291,6 +293,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
+    rubocop-rails (2.20.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     sass-rails (6.0.0)
@@ -343,11 +349,12 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
+  aarch64-linux
   x86_64-linux
 
 DEPENDENCIES
   activeadmin!
-  annotate
+  annotate (~> 3.2)
   arctic_admin
   awesome_rails_console
   bootsnap
@@ -364,6 +371,7 @@ DEPENDENCIES
   rails (~> 7.0.5)
   rspec-rails
   rubocop
+  rubocop-rails
   sass-rails
   shoulda-matchers
   solargraph
