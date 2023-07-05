@@ -5,6 +5,8 @@ module Types
     field :id, ID, null: false
     field :username, String
     field :email, String
+    field :other_names, String, null: true
+    field :last_name, String, null: false
     field :password_digest, String
     field :active, Boolean
     field :points, Float
