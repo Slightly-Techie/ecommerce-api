@@ -57,4 +57,17 @@ docker-compose up
 - Click on the play button in the top right corner to start the container
 - Go to `localhost:3000` in your browser to view the application
 
+
+#### Notes
+
+To run any command within the container, use this:
+
+docker-compose run api <command> #where api is the name of the service
+
+#examples:
+- docker-compose run api rails c
+- docker-compose run api rails g model user
+- docker-compose run api rails db:migrate
+- docker-compose run api rspec
+
 ## Documentation

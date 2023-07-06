@@ -64,3 +64,7 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+def gql_response(response, mutation_name)
+  JSON.parse(response.body)["data"][mutation_name]
+end

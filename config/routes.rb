@@ -5,3 +5,15 @@ Rails.application.routes.draw do
   root to: "api#healthcheck"
   post "/", to: "graphql#execute"
 end
+
+Rails.application.routes.draw do
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "graphql#execute"
+  end
+
+  post "/graphql", to: "graphql#execute"
+end
+
+Rails.application.routes.draw do
+  post '/confirm_email', to: 'users#confirm_email', as: 'confirm_email'
+end
