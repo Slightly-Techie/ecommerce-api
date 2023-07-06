@@ -40,19 +40,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_05_100608) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
-    t.boolean "active"
-    t.decimal "points"
-    t.boolean "email_confirmed"
+  create_table "users", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.boolean "active", default: false
+    t.decimal "points", default: "0.0"
+    t.boolean "email_confirmed", default: false
     t.string "password_reset_token"
     t.string "confirmation_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
     t.string "other_names"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

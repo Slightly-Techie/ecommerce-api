@@ -5,8 +5,11 @@ module Mutations
     describe "CreateUser mutation" do
       
       it "should create a user" do
-    
+        post :execute, params: { query: query }
+        result = JSON.parse(response.body)
 
+        user_data = data(result)
+        expect(user_data["email"]).to eq("testing@gmail.com")
 
       end
     end

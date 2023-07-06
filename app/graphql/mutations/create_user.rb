@@ -15,8 +15,8 @@ module Mutations
       user = User.new(
         username: username,
         email: email,
-        other_names: other_names
-        lastname: lastname
+        other_names: other_names,
+        lastname: lastname,
         password_digest: password_digest,
         active: true,
         email_confirmed: false,
