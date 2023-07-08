@@ -48,4 +48,8 @@ class User < ApplicationRecord
 
     UserMailer.confirmation_email(self).deliver_now
   end
+
+  def send_password_reset_email
+    
+  end
 end
