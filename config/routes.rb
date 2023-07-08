@@ -16,4 +16,5 @@ end
 
 Rails.application.routes.draw do
   post '/confirm_email', to: 'users#confirm_email', as: 'confirm_email'
+  post "/password/forgot", to: "users#forgot_password",as: "forgot_password"
 end
