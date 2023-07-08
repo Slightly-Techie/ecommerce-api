@@ -34,5 +34,9 @@ class User < ApplicationRecord
     update(confirmation_token: rand(000000..999999))
     UserMailer.confirmation_email(self).deliver_now
   end
+
+  def send_password_reset_email
+    
+  end
 end
 
