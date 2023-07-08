@@ -21,15 +21,9 @@ module Mutations
       )
 
       if user.save
-<<<<<<< HEAD
-        respond 201, user: user, error: []
-      else
-        respond 400, user: nil, error: user.errors
-=======
         { user: user, errors: [] }
       else
         { user: nil, errors: user.errors.full_messages }
->>>>>>> fd74ba9 (implemented user sugn ups)
       end
     end
   end
