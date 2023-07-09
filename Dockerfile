@@ -26,4 +26,4 @@ RUN bundle exec bootsnap precompile --gemfile app/ lib/
 # ENTRYPOINT ["/app/bin/docker-entrypoint"]
 
 EXPOSE 3000
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server", "-b", "0.0.0.0", "-p", "8080"]
