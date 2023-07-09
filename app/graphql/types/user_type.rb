@@ -3,11 +3,11 @@
 module Types
   class UserType < Types::BaseObject
     field :id, ID, null: false
-    field :username, String
-    field :email, String
-    field :other_names, String, null: true
+    field :first_name, String, null: false
     field :last_name, String, null: false
-    field :password_digest, String
+    field :username, String, null: false
+    field :email, String, null: false
+    field :password_digest, String, null: false
     field :active, Boolean
     field :points, Float
     field :email_confirmed, Boolean
