@@ -2,19 +2,24 @@
 #
 # Table name: users
 #
-#  id                   :integer          not null, primary key
-#  active               :boolean
+#  id                   :bigint           not null, primary key
+#  active               :boolean          default(FALSE)
 #  confirmation_token   :string
-#  email                :string
-#  email_confirmed      :boolean
-#  last_name            :string
-#  other_names          :string
-#  password_digest      :string
+#  email                :string           not null
+#  email_confirmed      :boolean          default(FALSE)
+#  first_name           :string           not null
+#  last_name            :string           not null
+#  password_digest      :string           not null
 #  password_reset_token :string
-#  points               :decimal(, )
-#  username             :string
+#  points               :decimal(, )      default(0.0)
+#  username             :string           not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email     (email)
+#  index_users_on_username  (username)
 #
 FactoryBot.define do
   factory :user do
