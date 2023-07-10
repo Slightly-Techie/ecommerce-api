@@ -7,11 +7,9 @@ module Mutations
     argument :password, String, required: true
 
     field :user, Types::UserType, null: true
-    field :errors, [String], null: false
+    field :errors, [String], null: true
 
-    def resolve(username:, email:, password:)
-      password_digest = BCrypt::Password.create(password)
-
+    def resolve(params)
       user = User.new(
         username: params[:username],
         email: params[:email],
@@ -21,9 +19,9 @@ module Mutations
       )
 
       if user.save
-        { user: user, errors: [] }
+        respond 201, user: user, error: []
       else
-        { user: nil, errors: user.errors.full_messages }
+        respond 400, user: nil, error: user.errors
       end
     end
   end
