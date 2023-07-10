@@ -32,7 +32,13 @@ class User < ApplicationRecord
 
   def send_confirmation_email
     update(confirmation_token: rand(000000..999999))
-    UserMailer.confirmation_email(self).deliver_now
+    UserMailer.welcome_mail(self).deliver_now
+  end
+
+  def send_password_reset_email
+    self.update!(password_reset_token: rand(000000..999999))
+
+    UserMailer.forgot_password_mail(self).deliver_now
   end
 end
 
