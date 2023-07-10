@@ -10,6 +10,7 @@ module EcommerceApi
     config.load_defaults 7.0
     # config.eager_load_paths << Rails.root.join("extras")
     config.hosts << "admin.lvh.me"
+    config.hosts << "localhost"
 
     config.api_only = true
     config.middleware.use Rack::MethodOverride
