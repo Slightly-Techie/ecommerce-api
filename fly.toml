@@ -7,8 +7,14 @@ app = "ecommerce-api-st"
 primary_region = "ams"
 console_command = "/rails/bin/rails console"
 
+[env]
+  PORT=8080
+
+[deploy]
+  release_command = "bundle exec rails db:migrate"
+
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
