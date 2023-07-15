@@ -8,13 +8,16 @@ module Mutations
         def resolve(email:)
             user = User.find_by(email: email)
 
-            if user && !user.confirmed?
-                user.send_confirmation_email
-                { success: true, errors: [] }
+            if user
+                if user.email_confirmed?
+                    { success: false, errors: ["Email Already Confirmed"] }
+                else
+                    user.send_confirmation_email
+                    { success: true, errors: [] }
+                end    
             else
-                { success: false, errors: ["Invalid Email Address"] }
+                    { success: false, errors: ["Invalid Email Address"] }
             end
-        
         end
     
     end
