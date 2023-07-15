@@ -8,8 +8,8 @@ module Mutations
     def resolve(token:)
       user = User.find_by(confirmation_token: token)
 
-      if user && !user.email_confirmed
-        user.update(email_confirmed: true, confirmation_token: nil)
+      if user && !user.email_confirmed?
+        user.update(email_confirmed: true, confirmation_token: nil, active: true)
         { success: true, errors: [] }
       else
         { success: false, errors: ["Invalid Token"] }
