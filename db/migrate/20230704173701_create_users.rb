@@ -9,8 +9,10 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.boolean :active, default: false
       t.decimal :points, default: 0.0
       t.boolean :email_confirmed, default: false
+      t.string :auth_token
       t.string :password_reset_token
       t.string :confirmation_token
+      
 
       t.timestamps
     end

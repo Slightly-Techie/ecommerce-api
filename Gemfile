@@ -6,6 +6,7 @@ gem "activeadmin", github: "activeadmin/activeadmin", branch: "master"
 gem "arctic_admin"
 gem "awesome_rails_console"
 gem "bcrypt", "~> 3.1.12"
+gem 'jwt'
 gem "bootsnap", require: false
 gem "devise"
 gem "dotenv-rails"

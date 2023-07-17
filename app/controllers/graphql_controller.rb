@@ -41,4 +41,5 @@ class GraphqlController < ApiController
 
       render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
     end
+
 end

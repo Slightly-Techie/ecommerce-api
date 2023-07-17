@@ -10,6 +10,8 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - default
   api:
     build: .
     entrypoint: "./docker/entrypoint.sh"
@@ -19,7 +21,6 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
     volumes:
       - .:/app
       - app-storage:/rails/storage
@@ -27,7 +28,13 @@ services:
       - db
     ports:
       - "3000:3000"
+    networks:
+      - default
 
 volumes:
   postgres_data: {}
   app-storage: {}
+
+networks:
+  default:
+    # Use a custom driver
