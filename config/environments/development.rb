@@ -33,8 +33,6 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -65,4 +63,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.hosts << "ecommerce-api-st.fly.dev"
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 end
