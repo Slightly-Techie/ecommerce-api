@@ -11,7 +11,7 @@ RUN gem install mailcatcher
 
 WORKDIR /app
 
-COPY docker/entrypoint.sh /app/docker/entrypoint.sh
+# COPY docker/entrypoint.sh /app/docker/entrypoint.sh
 
 ENV RAILS_LOG_TO_STDOUT="1" \
   RAILS_SERVE_STATIC_FILES="true" 
@@ -19,11 +19,15 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 #   BUNDLE_WITHOUT="development"
 
 COPY Gemfile* ./
+
 RUN bundle install
+
+COPY . /app/
 
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
 
 # ENTRYPOINT ["/app/bin/docker-entrypoint"]
 
 EXPOSE 3000
+
 CMD ["rails", "server", "-b", "0.0.0.0"]
