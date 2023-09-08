@@ -11,7 +11,9 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     entrypoint: "./docker/entrypoint.sh"
     environment:
       - RAILS_ENV=${RAILS_ENV}
