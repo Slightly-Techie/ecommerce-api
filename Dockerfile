@@ -11,7 +11,7 @@ RUN gem install mailcatcher
 
 WORKDIR /app
 
-COPY docker/entrypoint.sh /app/docker/entrypoint.sh
+# COPY docker/entrypoint.sh /app/docker/entrypoint.sh
 
 ENV RAILS_LOG_TO_STDOUT="1" \
   RAILS_SERVE_STATIC_FILES="true" 
