@@ -19,11 +19,15 @@ ENV RAILS_LOG_TO_STDOUT="1" \
 #   BUNDLE_WITHOUT="development"
 
 COPY Gemfile* ./
+
 RUN bundle install
+
+COPY . /app/
 
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
 
 # ENTRYPOINT ["/app/bin/docker-entrypoint"]
 
 EXPOSE 3000
+
 CMD ["rails", "server", "-b", "0.0.0.0"]
