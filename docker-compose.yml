@@ -29,7 +29,13 @@ services:
       - db
     ports:
       - "3000:3000"
+    networks:
+      - default
 
 volumes:
   postgres_data: {}
   app-storage: {}
+
+networks:
+  default:
+    # some custom driver
