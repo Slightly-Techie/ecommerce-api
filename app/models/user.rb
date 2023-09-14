@@ -36,7 +36,7 @@ class User < ApplicationRecord
   end
 
   def send_password_reset_email
-    self.update!(password_reset_token: rand(000000..999999))
+    update!(password_reset_token: rand(000000..999999))
 
     UserMailer.forgot_password_mail(self).deliver_now
   end
