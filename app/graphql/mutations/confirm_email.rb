@@ -10,11 +10,10 @@ module Mutations
 
       if user && !user.email_confirmed?
         user.update(email_confirmed: true, confirmation_token: nil, active: true)
-        { success: true, errors: [] }
+        respond 200, success: true, errors: []
       else
-        { success: false, errors: ["Invalid Token"] }
+        respond 400, success: false, errors: ["Invalid Token"]
       end
     end
   end
 end
-

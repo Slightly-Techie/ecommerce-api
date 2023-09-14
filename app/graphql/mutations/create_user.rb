@@ -10,18 +10,12 @@ module Mutations
     field :errors, [String], null: true
 
     def resolve(params)
-      user = User.new(
-        username: params[:username],
-        email: params[:email],
-        first_name: params[:first_name],
-        last_name: params[:last_name],
-        password: params[:password]
-      )
+      user = User.new(params.to_h)
 
       if user.save
-        respond 201, user: user, error: []
+        respond 201, user: user, errors: []
       else
-        respond 400, user: nil, error: user.errors
+        respond 400, user: nil, errors: user.errors
       end
     end
   end
