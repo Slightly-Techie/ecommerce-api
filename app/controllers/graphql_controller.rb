@@ -4,8 +4,8 @@ class GraphqlController < ApiController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      current_user: current_user
+      current_user: current_user,
+      request: request
     }
     result = EcommerceApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -45,7 +45,7 @@ class GraphqlController < ApiController
     end
 
     def current_user
-      return nil if should_skip_session_validation?
+      # return nil if should_skip_session_validation?
 
       token = request.headers["Authorization"]
       return nil if token.blank?

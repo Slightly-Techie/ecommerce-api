@@ -9,20 +9,19 @@ module Mutations
     field :errors, [Types::ErrorType], null: true
     field :status, Int, null: false
 
-    protected
-
-      def respond(status, options = {})
-        options[:errors] = options[:error].present? ?
-          generate_errors(options[:error]) : nil
-
-        { status: status, **options }
-      end
+    def respond(status, options = {})
+      options[:errors] = options[:errors].present? ? generate_errors(options[:errors]) : nil
+      { status: status, **options }
+    end
 
     private
 
       def generate_errors(errors)
-        errors = errors.to_hash if errors.is_a? ActiveModel::Errors
-        errors.map { |key, value| { property: key, message: value.is_a?(Array) ? value.join(", ") : value } }
+        result = []
+        errors.each do |key, value|
+          result.push({ property: key, message: value })
+        end
+        result
       end
   end
 end

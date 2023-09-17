@@ -1,16 +1,19 @@
 class UserMailer < ApplicationMailer
   def welcome_mail(user)
     @user = user
-    mail(to: @user.email, subject: "Welcome to the ST Market")
+    subject = "Welcome to the ST Market 🌟🎉"
+    mail(to: @user.email, subject: subject)
   end
 
   def confirmation_mail(user)
     @user = user
-    mail(to: @user.email, subject: "Confirm Your Email")
+    subject = "Confirm your email 📬"
+    mail(to: @user.email, subject: subject)
   end
 
   def forgot_password_mail(user)
     @user = user
-    mail(to: @user.email, subject: "Reset Your Password")
+    subject = "Reset Your Password 🔑🔐"
+    mail(to: @user.email, subject: subject)
   end
 end

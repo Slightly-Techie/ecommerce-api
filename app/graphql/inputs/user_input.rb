@@ -1,8 +1,5 @@
 module Inputs
   class UserInput < BaseInput
-    argument :email, String, required: true
-    argument :username, String, required: true
-    argument :password, String, required: true
     argument :first_name, String, required: false
     argument :last_name, String, required: false
     argument :phone_number, String, required: false

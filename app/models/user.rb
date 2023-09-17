@@ -37,16 +37,16 @@ class User < ApplicationRecord
   enum account_type: { NON_TECHIE: 0, TECHIE: 1 }
 
   def token_expired?
-    token_expiration_date.past?
+    token_expiration_date&.past?
   end
 
   def confirm!
-    update(email_confirmed: true, confirmation_token: nil, token_expiration_date: nil)
-    activate! && send_welcome_email
+    update(email_confirmed: true, token_expiration_date: nil, active: true)
+    send_welcome_email
   end
 
   def token
-    session = sessions.create!(token: SecureRandom.hex(256), expiration_date: Time.now + 6.hours)
+    session = sessions.create!(token: SecureRandom.hex(64), expiration_date: Time.now + 6.hours)
     session.token
   end
 
@@ -54,17 +54,16 @@ class User < ApplicationRecord
 
   def send_confirmation_email
     update(confirmation_token: rand(000000..999999), token_expiration_date: Time.now + 1.hour)
-    UserMailer.confirmation_mail(self).deliver_now
+    UserMailer.confirmation_mail(self).deliver_later
   end
 
   def send_password_reset_email
     update(password_reset_token: rand(000000..999999), token_expiration_date: Time.now + 1.hour) && sessions.destroy_all
 
-    UserMailer.forgot_password_mail(self).deliver_now
+    UserMailer.forgot_password_mail(self).deliver_later
   end
 
   def send_welcome_email
-    UserMailer.welcome_mail(self).deliver_now
+    UserMailer.welcome_mail(self).deliver_later
   end
 end
-
