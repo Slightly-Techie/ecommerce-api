@@ -2,18 +2,23 @@ module Mutations
   class ConfirmEmail < BaseMutation
     argument :token, String, required: true
 
+    field :token, String, null: true
     field :success, Boolean, null: true
-    field :errors, [String], null: false
 
     def resolve(token:)
       user = User.find_by(confirmation_token: token)
 
-      if user && !user.email_confirmed?
-        user.update(email_confirmed: true, confirmation_token: nil, active: true)
-        respond 200, success: true, errors: []
-      else
-        respond 400, success: false, errors: ["Invalid Token"]
+      if user.email_confirmed?
+        respond 400, success: false, errors: { email: "Email already confirmed" }
+      elsif user.token_expired?
+        respond 400, success: false, errors: { email: "Token expired" }
       end
+
+      user.confirm!
+      respond 200, success: true, token: user.token
+
+      rescue ActiveRecord::RecordNotFound => e
+        respond 400, success: false, errors: { email: "Invalid token" }
     end
   end
 end

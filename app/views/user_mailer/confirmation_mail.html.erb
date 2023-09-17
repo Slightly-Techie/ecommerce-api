@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello <%= @user.username %>,</p>
+    <p>Thank you for signing up for ST Market!</p>
+    <p>Before you can get started, you need to confirm your email address by entering the following code:</p>
+    <p><strong><%= @user.confirmation_token %></strong></p>
+    <p>If you did not sign up for ST Market, please ignore this email.</p>
+    <p>Thanks,</p>
+    <p>The Sligthly Techie Team</p>
+  </body>
+</html>

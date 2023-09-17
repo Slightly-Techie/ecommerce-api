@@ -1,16 +1,11 @@
 class GraphqlController < ApiController
-  # If accessing from outside this domain, nullify the session
-  # This allows for outside API access while preventing CSRF attacks,
-  # but you'll have to authenticate your user separately
-  # protect_from_forgery with: :null_session
-
   def execute
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
       # Query context goes here, for example:
-      # current_user: current_user,
+      current_user: current_user
     }
     result = EcommerceApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
@@ -47,5 +42,23 @@ class GraphqlController < ApiController
       logger.error e.backtrace.join("\n")
 
       render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+    end
+
+    def current_user
+      return nil if should_skip_session_validation?
+
+      token = request.headers["Authorization"]
+      return nil if token.blank?
+
+      session = Session.find_by_token(token)
+      user = User.active.find_by_id(session&.user_id)
+      return :not_found if user.blank?
+      return :expired if session.expired?
+
+      user
+    end
+
+    def should_skip_session_validation?
+      ["login", "IntrospectionQuery"].any? { |query_name| params[:query].include?(query_name) }
     end
 end

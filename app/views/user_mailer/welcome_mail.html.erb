@@ -6,11 +6,17 @@
   <body>
     <h1>Welcome to ST Market!</h1>
     <p>Hello <%= @user.username %>,</p>
-    <p>Thank you for signing up for ST Market!</p>
-    <p>Before you can get started, you need to confirm your email address by entering the following code:</p>
-    <p><strong><%= @user.confirmation_token %></strong></p>
-    <p>If you did not sign up for ST Market, please ignore this email.</p>
+    <p>Congratulations! You have successfully signed up for ST Market.</p>
+    <p>Your account has been created with the following information:</p>
+    <p>Username: <%= @user.username %></p>
+    <p>Email: <%= @user.email %></p>
+    <p>Password: Encrypted for security purposes</p>
+    <p>You can login at any time to start shopping!</p>
+    <br>
+    <p>Have questions? </p>
+    <<p>Reach out to via email at <a href="mailto:marketplace@slightlytechie.com">
     <p>Thanks,</p>
     <p>The Sligthly Techie Team</p>
   </body>
 </html>
+
