@@ -8,7 +8,7 @@ module Mutations
       if current_user.update(user_input.to_h)
         respond 200, user: current_user
       else
-        respond 400, errors: current_user.errors
+        respond 400, errors: current_user.errors.full_messages
       end
     end
   end

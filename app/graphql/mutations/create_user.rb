@@ -13,7 +13,7 @@ module Mutations
       if user.save
         respond 201, user: user, token: user.token
       else
-        respond 400, errors: user.errors
+        respond 400, errors: user.errors.full_messages
       end
     end
   end
