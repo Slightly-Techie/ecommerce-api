@@ -9,5 +9,6 @@ module Types
     field :change_password, mutation: Mutations::ChangePassword
     field :update_user, mutation: Mutations::UpdateUser
     field :delete_user, mutation: Mutations::DeleteUser
+    field :set_account, mutation: Mutations::SetAccountType
   end
 end
