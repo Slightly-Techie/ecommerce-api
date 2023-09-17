@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_04_173701) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_17_090420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,16 +40,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_173701) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string "token"
+    t.datetime "expiration_date"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "username", null: false
     t.string "email", null: false
+    t.integer "account_type", default: 0
     t.string "password_digest", null: false
+    t.string "phone_number"
+    t.jsonb "social_links"
     t.boolean "active", default: false
-    t.decimal "points", default: "0.0"
     t.boolean "email_confirmed", default: false
     t.string "password_reset_token"
+    t.datetime "token_expiration_date", precision: nil
     t.string "confirmation_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,4 +69,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_173701) do
     t.index ["username"], name: "index_users_on_username"
   end
 
+  add_foreign_key "sessions", "users"
 end
