@@ -5,6 +5,7 @@ module Types
     field :resend_email_otp, mutation: Mutations::ResendConfirmationEmail
     field :login, mutation: Mutations::Login
     field :forgot_password, mutation: Mutations::ForgotPassword
+    field :verify_reset_token, mutation: Mutations::VerifyResetToken
     field :reset_password, mutation: Mutations::ResetPassword
     field :change_password, mutation: Mutations::ChangePassword
     field :update_user, mutation: Mutations::UpdateUser
