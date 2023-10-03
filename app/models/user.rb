@@ -31,6 +31,7 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true, presence: true
   validates_with EmailAddress::ActiveRecordValidator, field: :email
 
+  before_save :ensure_proper_case
   after_create :send_confirmation_email
 
   scope :active, -> { where(active: true) }
@@ -65,5 +66,10 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.welcome_mail(self).deliver_later
+  end
+
+  def ensure_proper_case
+    self.email = email.downcase
+    self.username = username.downcase
   end
 end
