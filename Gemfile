@@ -10,7 +10,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "dotenv-rails"
 gem "email_address"
-gem "graphql"
+gem "graphql" 
 gem "httpparty", "~> 0.2.0"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
