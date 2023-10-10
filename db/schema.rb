@@ -50,23 +50,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_090420) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.string "username", null: false
     t.string "email", null: false
-    t.integer "account_type", default: 0
     t.string "password_digest", null: false
-    t.string "phone_number"
-    t.jsonb "social_links"
     t.boolean "active", default: false
+    t.decimal "points", default: "0.0"
     t.boolean "email_confirmed", default: false
     t.string "password_reset_token"
-    t.datetime "token_expiration_date", precision: nil
     t.string "confirmation_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["username"], name: "index_users_on_username"
+    t.string "last_name"
+    t.string "other_names"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["password_reset_token"], name: "index_users_on_password_reset_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "sessions", "users"
