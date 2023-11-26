@@ -5,5 +5,7 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :profile, resolver: Queries::Profile
+    field :products, resolver: Queries::Products
+    field :fetch_product, resolver: Queries::FetchProduct
   end
 end
