@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 gem "activeadmin", github: "activeadmin/activeadmin", branch: "master"
-# gem "acts-as-taggable-on", "~> 9.0"
+gem "acts-as-taggable-on", "~> 9.0"
 gem "arctic_admin"
 gem "awesome_rails_console"
 gem "bcrypt", "~> 3.1.12"
