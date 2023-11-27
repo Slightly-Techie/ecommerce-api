@@ -18,7 +18,7 @@
 #
 class Product < ApplicationRecord
   has_many_attached :images
-  # act_as_taggable_on :categories
+  act_as_taggable_on :categories
 
   has_many :reviews, dependent: :destroy
   has_many :views, class_name: "ProductView", dependent: :destroy
