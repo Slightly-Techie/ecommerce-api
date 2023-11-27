@@ -26,7 +26,9 @@
 #
 class User < ApplicationRecord
   has_secure_password
+  has_many :reviews, dependent: :destroy
   has_many :sessions, dependent: :destroy
+  has_many :product_views, dependent: :destroy
 
   validates :username, :email, uniqueness: true, presence: true
   validates_with EmailAddress::ActiveRecordValidator, field: :email

@@ -11,5 +11,8 @@ module Types
     field :update_user, mutation: Mutations::UpdateUser
     field :delete_user, mutation: Mutations::DeleteUser
     field :set_account, mutation: Mutations::SetAccountType
+    field :view_product, mutation: Mutations::CreateProductView
+    field :add_review, mutation: Mutations::CreateReview
+    field :update_review, mutation: Mutations::UpdateReview
   end
 end
