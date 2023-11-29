@@ -1,3 +1,4 @@
+require 'httparty'
 class CrmService
   include HTTParty
   base_uri "https://crm-api.fly.dev/api/v1"
