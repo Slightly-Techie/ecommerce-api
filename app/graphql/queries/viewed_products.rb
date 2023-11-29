@@ -1,5 +1,5 @@
-module Query
-  class ViewProducts < BaseQuery
+module Queries
+  class ViewedProducts < BaseQuery
     type Types::ProductType.connection_type, null: false
 
     def resolve

@@ -18,6 +18,9 @@ gem "rack-cors"
 gem "rails", "~> 7.0.5"
 gem "sass-rails"
 gem "sprockets", "<4"
+gem "httparty", "~> 0.21.0"
+gem 'multi_xml', '0.6.0'
+
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
