@@ -19,6 +19,7 @@
 class Product < ApplicationRecord
   has_many_attached :images
   acts_as_taggable_on :categories
+  is_impressionable counter_cache: true, column_name: :views_count, unique: :session_hash
 
   has_many :reviews, dependent: :destroy
   has_many :views, class_name: "ProductView", dependent: :destroy
