@@ -151,6 +151,8 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    impressionist (2.0.0)
+      nokogiri (~> 1)
     inherited_resources (1.13.1)
       actionpack (>= 5.2, < 7.1)
       has_scope (~> 0.6)
@@ -383,6 +385,7 @@ DEPENDENCIES
   faker (~> 3.2)
   graphql
   httparty (~> 0.21.0)
+  impressionist
   multi_xml (= 0.6.0)
   pg (~> 1.1)
   pry-byebug

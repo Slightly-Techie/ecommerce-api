@@ -20,6 +20,7 @@ gem "sass-rails"
 gem "sprockets", "<4"
 gem "httparty", "~> 0.21.0"
 gem 'multi_xml', '0.6.0'
+gem 'impressionist'
 
 
 group :development, :test do
