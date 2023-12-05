@@ -2,19 +2,20 @@
 #
 # Table name: users
 #
-#  id                   :bigint           not null, primary key
-#  active               :boolean          default(FALSE)
-#  confirmation_token   :string
-#  email                :string           not null
-#  email_confirmed      :boolean          default(FALSE)
-#  last_name            :string
-#  other_names          :string
-#  password_digest      :string           not null
-#  password_reset_token :string
-#  points               :decimal(, )      default(0.0)
-#  username             :string           not null
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
+#  id                    :bigint           not null, primary key
+#  active                :boolean          default(FALSE)
+#  confirmation_token    :string
+#  email                 :string           not null
+#  email_confirmed       :boolean          default(FALSE)
+#  last_name             :string
+#  other_names           :string
+#  password_digest       :string           not null
+#  password_reset_token  :string
+#  points                :decimal(, )      default(0.0)
+#  token_expiration_date :datetime
+#  username              :string           not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 # Indexes
 #
