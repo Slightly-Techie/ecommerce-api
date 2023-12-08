@@ -3,15 +3,17 @@
 # Table name: users
 #
 #  id                    :bigint           not null, primary key
+#  account_type          :integer          default("NON_TECHIE")
 #  active                :boolean          default(FALSE)
 #  confirmation_token    :string
 #  email                 :string           not null
 #  email_confirmed       :boolean          default(FALSE)
+#  first_name            :string
 #  last_name             :string
-#  other_names           :string
 #  password_digest       :string           not null
 #  password_reset_token  :string
-#  points                :decimal(, )      default(0.0)
+#  phone_number          :string
+#  social_links          :jsonb
 #  token_expiration_date :datetime
 #  username              :string           not null
 #  created_at            :datetime         not null
@@ -19,10 +21,8 @@
 #
 # Indexes
 #
-#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_password_reset_token  (password_reset_token) UNIQUE
-#  index_users_on_username              (username) UNIQUE
+#  index_users_on_email     (email)
+#  index_users_on_username  (username)
 #
 FactoryBot.define do
   factory :user do
