@@ -14,4 +14,5 @@
 #  index_items_on_product_id  (product_id)
 #
 class Item < ApplicationRecord
+   belongs_to :order
 end
