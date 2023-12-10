@@ -7,5 +7,6 @@ module Types
     field :profile, resolver: Queries::Profile
     field :products, resolver: Queries::Products
     field :fetch_product, resolver: Queries::FetchProduct
+    field :fetch_saved_products, resolver: Queries::FetchSavedProducts
   end
 end
