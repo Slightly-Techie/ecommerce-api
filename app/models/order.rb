@@ -2,15 +2,19 @@
 #
 # Table name: orders
 #
-#  id           :bigint           not null, primary key
-#  canceled_at  :datetime
-#  completed_at :datetime
-#  order_number :string
-#  returned_at  :datetime
-#  status       :integer          default(0)
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  user_id      :bigint           not null
+#  id            :bigint           not null, primary key
+#  canceled_at   :datetime
+#  completed_at  :datetime
+#  currency      :string
+#  order_amount  :decimal(, )
+#  order_number  :string
+#  order_service :string
+#  order_type    :string
+#  returned_at   :datetime
+#  status        :integer          default(0)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :bigint           not null
 #
 # Indexes
 #
@@ -22,4 +26,8 @@
 #
 class Order < ApplicationRecord
   belongs_to :user
+  has_many :items
+  has_many :products, through: :items
+
+  
 end
