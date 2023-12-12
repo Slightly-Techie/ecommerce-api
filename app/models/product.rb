@@ -23,6 +23,9 @@ class Product < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :views, class_name: "ProductView", dependent: :destroy
+  
+  has_many :items
+  has_many :orders, through: :items
 
   scope :published, -> { where(published: true) }
   scope :discounted, -> { where(is_discounted: true) }
