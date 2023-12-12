@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.datetime :completed_at
       t.datetime :canceled_at
       t.datetime :returned_at
+      
 
       t.timestamps
     end

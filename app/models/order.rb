@@ -22,4 +22,18 @@
 #
 class Order < ApplicationRecord
   belongs_to :user
+  has_many :items, dependent: :destroy
+
+  after_create :set_order_number
+
+  def order_total
+    items.map(&:item_total_price).sum
+  end
+
+  
+
+    def set_order_number
+        self.order_number = SecureRandom.hex(8).upcase
+        save!
+    end
 end
