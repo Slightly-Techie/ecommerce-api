@@ -3,6 +3,8 @@
 # Table name: items
 #
 #  id         :bigint           not null, primary key
+#  quantity   :integer          default(1)
+#  unit_price :decimal(7, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  order_id   :bigint

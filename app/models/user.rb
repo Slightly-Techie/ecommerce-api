@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :product_views, dependent: :destroy
   has_many :saved_products, dependent: :destroy
-  has_many :orders
+  has_one :cart, dependent: :destroy  
 
   validates :username, :email, uniqueness: true, presence: true
   validates_with EmailAddress::ActiveRecordValidator, field: :email

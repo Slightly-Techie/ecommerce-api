@@ -1,22 +1,22 @@
 # == Schema Information
 #
-# Table name: items
+# Table name: carts
 #
 #  id         :bigint           not null, primary key
-#  quantity   :integer          default(1)
-#  unit_price :decimal(7, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  order_id   :bigint
-#  product_id :bigint
+#  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_items_on_order_id    (order_id)
-#  index_items_on_product_id  (product_id)
+#  index_carts_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'
 
-RSpec.describe Item, type: :model do
+RSpec.describe Cart, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

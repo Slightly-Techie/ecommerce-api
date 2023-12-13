@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_03_171306) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_12_142725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_171306) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
@@ -97,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_171306) do
   create_table "items", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "order_id"
+    t.integer "quantity", default: 1
+    t.decimal "unit_price", precision: 7, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_items_on_order_id"
@@ -148,6 +157,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_171306) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "saved_products", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_saved_products_on_product_id"
+    t.index ["user_id"], name: "index_saved_products_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -212,11 +230,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_03_171306) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "carts", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "product_views", "products"
   add_foreign_key "product_views", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
+  add_foreign_key "saved_products", "products"
+  add_foreign_key "saved_products", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "tags"
 end
