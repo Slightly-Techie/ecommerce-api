@@ -2,7 +2,7 @@ module Queries
     class FetchOrder < BaseQuery
         argument :id, ID, required: true
         argument :order_number, String, required: true
-        argument :order_amount, Decimal, required: true
+        argument :order_amount, Float, required: true
         argument :order_type, String, required: true
         argument :order_status, String, required: true
         argument :created_at, String, required: true

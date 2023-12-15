@@ -4,7 +4,7 @@ module Types
         field :user, Types::UserType, null: false
         field :status,Integer, null: false
         field :order_number, String, null: false
-        field :order_amount, Decimal, null: false
+        field :order_amount, Float, null: false
         field :order_type, String, null: false
         field :currency, String, null: false
         field :order_service, String, null: false

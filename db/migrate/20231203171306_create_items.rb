@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.belongs_to :product
       t.belongs_to :order
       t.integer :quantity, default: 1
-      t.decimal :unit_price, precision: 7, scale: 2
+      t.decimal :unit_price
       
 
       t.timestamps

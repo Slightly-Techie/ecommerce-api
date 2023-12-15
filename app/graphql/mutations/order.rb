@@ -1,7 +1,7 @@
 module Mutations
     class Order < BaseMutation
         argument :order_number, String, required: true
-        argument :order_amount, Decimal, required: true
+        argument :order_amount, Float, required: true
         argument :order_type, String, required: true
         argument :currency, String, required: true
         argument :order_service, String, required: true
