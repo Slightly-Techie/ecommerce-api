@@ -1,5 +1,5 @@
 module Types
-  class SavedProductType < Types::BaseObject
+  class SaveProductType < Types::BaseObject
     field :id, ID, null: false
     field :product, Types::ProductType, null: false
   end

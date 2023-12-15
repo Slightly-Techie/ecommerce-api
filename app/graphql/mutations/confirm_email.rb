@@ -1,6 +1,6 @@
 module Mutations
   class ConfirmEmail < BaseMutation
-    argument :token, String, required: true
+    argument :token, String, required: false
 
     field :token, String, null: true
     field :success, Boolean, null: true
