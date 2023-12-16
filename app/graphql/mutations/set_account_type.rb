@@ -17,7 +17,7 @@ module Mutations
             )
           respond 200, user: current_user
         else
-          respond 400, message: "Sorry #{current_user.username}, the email you used to sign up is not registered in our CRM"
+          respond 400, message: "Sorry #{current_user.username}, the email you used to sign up is not registered on our CRM"
         end
       elsif account_type == "NON_TECHIE"
         current_user.update(account_type: account_type)

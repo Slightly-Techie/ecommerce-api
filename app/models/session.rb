@@ -23,4 +23,7 @@ class Session < ApplicationRecord
   def expired?
     expiration_date.past?
   end
+
+
+
 end

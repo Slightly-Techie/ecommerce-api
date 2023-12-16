@@ -5,7 +5,7 @@ module Queries
 
     def resolve
       # fetch a list of products saved by the current user
-     current_user.saved_products.include(:product).map(&:product)
+     current_user.saved_products.includes(:product).map(&:product)
     end
   end
 end
