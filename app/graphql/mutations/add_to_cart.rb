@@ -1,20 +1,18 @@
 module Mutations
     class AddToCart < BaseMutation
-        argument :user_id, ID, required: true
-        argument :product_id, ID, required: true
-        argument :quantity, Integer, required: true
+        argument :product_id,ID, required: true
 
-        type Types::CartType
+        field :success,Boolean, null: false
+        field :cart,Types::CartType, null: true
 
-        def resolve(params)
-            user = User.find(user_id)
-            cart = user.cart || user.create_create
+        def resolve(product_id:)
+            cart = Cart.create(product_id: product_id, user:  current_user)
 
-            product = Product.find(product_id)
-            item = cart.items.find_or_initialize_by(product: product)
-            item.update(quantity: item.quantity + quantity)
-
-            cart
+            if cart
+                respond 200,success:true, cart: cart
+            else
+                respond 400, success:false, errors: cart.errors.full_messages
+            end
         end
     end
-end
+    end

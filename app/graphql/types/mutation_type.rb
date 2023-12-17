@@ -16,5 +16,7 @@ module Types
     field :update_review, mutation: Mutations::UpdateReview
     field :save_product, mutation: Mutations::SaveProduct
     field :add_to_cart, mutation: Mutations::AddToCart
+    field :create_product_view, mutation: Mutations::CreateProductView
+
   end
 end
