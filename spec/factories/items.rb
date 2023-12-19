@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  quantity   :integer          default(1)
-#  unit_price :decimal(7, 2)
+#  unit_price :decimal(, )
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  order_id   :bigint
