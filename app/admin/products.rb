@@ -1,6 +1,6 @@
 ActiveAdmin.register Product do
 
-  permit_params :name, :price, :description, :specification, :in_stock,:categories, :is_discounted, :discount_percentage, :published, images: []
+  permit_params :name, :price, :description, :specification, :in_stock, :category_list, :is_discounted, :discount_percentage, :published, images: []
 
   index do
     selectable_column
@@ -25,7 +25,7 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :description
       f.input :specification
-      f.input :categories
+      f.input :category_list
       f.input :discount_percentage
       f.input :in_stock
       f.input :is_discounted
