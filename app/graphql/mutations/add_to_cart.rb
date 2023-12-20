@@ -6,7 +6,7 @@ module Mutations
         field :cart,Types::CartType, null: true
 
         def resolve(product_id:)
-            cart = Cart.create(product_id: product_id, user:  current_user)
+            cart = Cart.find_or_create_by(product_id: product_id, user:  current_user)
 
             if cart
                 respond 200,success:true, cart: cart

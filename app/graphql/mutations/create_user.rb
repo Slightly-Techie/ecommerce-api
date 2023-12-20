@@ -1,6 +1,8 @@
 module Mutations
   class CreateUser < BaseMutation
     argument :email, String, required: true
+    argument :first_name, String, required: true
+    argument :last_name, String, required: true
     argument :username, String, required: true
     argument :password, String, required: true
 
