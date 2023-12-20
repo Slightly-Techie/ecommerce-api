@@ -25,7 +25,7 @@ ActiveAdmin.register Product do
       f.input :price
       f.input :description
       f.input :specification
-      f.input :categories, as: :string, input_html: { value: f.object.categories.join(', ') }
+      f.input :categories
       f.input :discount_percentage
       f.input :in_stock
       f.input :is_discounted
