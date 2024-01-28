@@ -9,7 +9,10 @@ module Types
     field :specification, String
     field :in_stock, Boolean
     field :published, Boolean
-    field :reviews_count, Integer
+    field :discount_percentage, Float
+    field :is_discounted, Boolean
+    field :categories, String
+    field :views_count, Integer
     field :reviews, [Types::ReviewType], null: true
     field :ratings, Float
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false

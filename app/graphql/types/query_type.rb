@@ -9,5 +9,6 @@ module Types
     field :fetch_product, resolver: Queries::FetchProduct
     field :fetch_saved_products, resolver: Queries::FetchSavedProducts
     field :fetch_similar_products, resolver: Queries::FetchSimilarProducts
+    field :fetch_product_categories, resolver: Queries::FetchProductCategories
   end
 end
