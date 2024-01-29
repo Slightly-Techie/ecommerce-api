@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :product_views, dependent: :destroy
   has_many :saved_products, dependent: :destroy
-  has_one :cart, dependent: :destroy  
+  has_one :cart, dependent: :destroy
 
   validates :username, :email, uniqueness: true, presence: true
   validates_with EmailAddress::ActiveRecordValidator, field: :email
@@ -59,7 +59,7 @@ class User < ApplicationRecord
 
   def send_confirmation_email
     update(confirmation_token: rand(000000..999999), token_expiration_date: Time.now + 1.hour)
-    UserMailer.confirmation_mail(self).deliver_later
+    UserMailer.confirmation_mail(self).deliver_now
   end
 
   def send_password_reset_email
