@@ -18,7 +18,7 @@ module Mutations
       end
 
       rescue ActiveRecord::RecordNotFound => e
-        respond 400, success: false, errors: { email: "Invalid token" }
+        respond 400, success: false, errors: { email: "User not found" }
     end
   end
 end
