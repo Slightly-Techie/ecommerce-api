@@ -5,6 +5,7 @@
 #  id              :uuid             not null, primary key
 #  extension       :string
 #  key             :string
+#  media_type      :string
 #  name            :string
 #  total_bytes     :integer
 #  uploadable_type :string

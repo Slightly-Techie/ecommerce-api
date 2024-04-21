@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_211331) do
     t.string "key"
     t.string "name"
     t.string "extension"
+    t.string "media_type"
     t.string "plublic_id"
     t.integer "total_bytes"
     t.uuid "uploadable_id"
