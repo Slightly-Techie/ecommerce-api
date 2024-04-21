@@ -1,23 +1,14 @@
-require_relative "boot"
-require "rails/all"
-require "sprockets/railtie"
+require_relative 'boot'
+require 'rails/all'
 
 Bundler.require(*Rails.groups)
-Dotenv::Railtie.load if %w[development test].include? ENV["RAILS_ENV"]
+Dotenv::Rails.load if %w[development test].include? ENV['RAILS_ENV']
 
 module EcommerceApi
   class Application < Rails::Application
-    config.load_defaults 7.0
-    # config.eager_load_paths << Rails.root.join("extras")
-    config.hosts = nil
-    # config.hosts << "admin.lvh.me"
-    # config.hosts << "localhost"
+    config.load_defaults 7.1
 
+    config.autoload_lib(ignore: %w[assets tasks])
     config.api_only = true
-    config.middleware.use Rack::MethodOverride
-    config.middleware.use ActionDispatch::Flash
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
-    
   end
 end

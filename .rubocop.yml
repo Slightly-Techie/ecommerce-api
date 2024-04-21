@@ -4,9 +4,7 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.7
-  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
-  # to ignore them, so only the ones explicitly set in this file are enabled.
+  TargetRubyVersion: 3.1
   DisabledByDefault: true
   Exclude:
     - Rakefile
@@ -347,6 +345,11 @@ Style/NegatedIfElseCondition:
     Checks for uses of `if-else` and ternary operators with a negated condition
     which can be simplified by inverting condition and swapping branches.
   Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "app/controllers/swagger/**/*"
 
 #################### Lint ###########################
 

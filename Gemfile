@@ -1,38 +1,21 @@
-source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+# frozen_string_literal: true
 
-ruby "3.2.2"
-gem "activeadmin", github: "activeadmin/activeadmin", branch: "master"
-gem "acts-as-taggable-on", "~> 9.0"
-gem "arctic_admin"
-gem "awesome_rails_console"
-gem "bcrypt", "~> 3.1.12"
-gem "bootsnap", require: false
-gem "devise"
-gem "dotenv-rails"
-gem "email_address"
-gem "graphql"
-gem "pg", "~> 1.1"
-gem "puma", "~> 5.0"
-gem "rack-cors"
-gem "rails", "~> 7.0.5"
-gem "sass-rails"
-gem "sprockets", "<4"
-gem "httparty", "~> 0.21.0"
-gem 'multi_xml', '0.6.0'
-gem 'impressionist'
+source 'https://rubygems.org'
 
+ruby '3.3.0'
+gem 'aws-sdk-s3'
+gem 'bcrypt', '~> 3.1.18'
+gem 'bootsnap', require: false
+gem 'dotenv-rails'
+gem 'email_address', '~> 0.2.4'
+gem 'faraday'
+gem 'googleauth'
+gem 'graphql'
+gem 'pg', '~> 1.1'
+gem 'puma', '>= 5.0'
+gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
 group :development, :test do
-  gem "debug", platforms: %i[mri mingw x64_mingw]
-  gem "factory_bot_rails"
-  gem "faker", "~> 3.2"
-  gem "pry-byebug"
-  gem "pry-rails"
-  gem "rspec-rails"
-  gem "rubocop", require: false
-  gem "rubocop-rails"
-  gem "shoulda-matchers"
 end
 
 group :development do
